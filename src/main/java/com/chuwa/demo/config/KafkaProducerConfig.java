@@ -1,5 +1,6 @@
 package com.chuwa.demo.config;
 
+import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,5 +30,13 @@ public class KafkaProducerConfig {
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
+    }
+
+    @Bean
+    public NewTopic createTopic() {
+        return new NewTopic(
+                "${kafka.topic.name}",
+                3,
+                (short) 2);
     }
 }
