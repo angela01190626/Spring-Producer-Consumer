@@ -11,6 +11,7 @@ public class KafkaProducerService {
     @Value("${kafka.topic.name}")
     private String topicName;
 
+    // 工具类 KafkaTemplate
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
